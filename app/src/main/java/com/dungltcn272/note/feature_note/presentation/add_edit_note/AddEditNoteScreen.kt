@@ -82,7 +82,9 @@ fun AddEditNoteScreen(
                 onClick = {
                     viewModel.onEvent(AddEditNoteEvent.SaveNote)
                 },
-                modifier = Modifier.clip(CircleShape).background(MaterialTheme.colorScheme.primary)
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.primary)
             ) {
                 Icon(imageVector = Icons.Default.Done, contentDescription = "Save note")
             }

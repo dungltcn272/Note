@@ -11,7 +11,7 @@ import com.dungltcn272.note.feature_note.domain.model.Note
 )
 abstract class NoteDatabase : RoomDatabase() {
 
-    abstract val noteDao : NoteDao
+    abstract val noteDao: NoteDao
 
     companion object {
         const val DATABASE_NAME = "notes_db"

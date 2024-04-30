@@ -18,11 +18,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule  {
+object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteDatabase(app: Application) : NoteDatabase {
+    fun provideNoteDatabase(app: Application): NoteDatabase {
         return Room.databaseBuilder(
             app,
             NoteDatabase::class.java,
@@ -32,13 +32,13 @@ object AppModule  {
 
     @Provides
     @Singleton
-    fun provideNoteRepository(db : NoteDatabase): NoteRepository{
+    fun provideNoteRepository(db: NoteDatabase): NoteRepository {
         return NoteRepositoryIml(db.noteDao)
     }
 
     @Provides
     @Singleton
-    fun provideNoteUseCase(repository: NoteRepository) : NoteUseCases{
+    fun provideNoteUseCase(repository: NoteRepository): NoteUseCases {
         return NoteUseCases(
             getNotes = GetNotes(repository),
             deleteNote = DeleteNote(repository),

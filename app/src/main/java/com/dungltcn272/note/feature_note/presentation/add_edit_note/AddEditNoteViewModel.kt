@@ -41,11 +41,11 @@ class AddEditNoteViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    private var currentNoteId : Int? = null
+    private var currentNoteId: Int? = null
 
     init {
         savedStateHandle.get<Int>("noteId")?.let { noteId ->
-            if (noteId != -1){
+            if (noteId != -1) {
                 viewModelScope.launch {
                     noteUseCases.getNote(noteId)?.also { note ->
                         currentNoteId = note.id
@@ -101,7 +101,7 @@ class AddEditNoteViewModel @Inject constructor(
                             )
                         )
                         _eventFlow.emit(UiEvent.SaveNote)
-                    }catch (e: InvalidNoteException) {
+                    } catch (e: InvalidNoteException) {
                         _eventFlow.emit(
                             UiEvent.ShowSnackBar(
                                 message = e.message ?: "Could save note"
